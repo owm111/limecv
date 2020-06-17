@@ -1603,6 +1603,7 @@ Dear Miss.\ Smith
     \pgfkeys{/@cv/names/references = References}%
     \pgfkeys{/@cv/names/skills = Skills}%
     \pgfkeys{/@cv/names/publications = Publications}%
+    \pgfkeys{/@cv/names/awardscerts = Awards and Certifications}%
 }
 %    \end{macrocode}
 %
@@ -1837,6 +1838,23 @@ Dear Miss.\ Smith
   \cv@EndSectionDraw
   \stepcounter{cv@lastItem}
   \draw (item \the\value{cv@itemPrev}.south west) 
+    node (cv@last item \the\value{cv@lastItem}) {};
+}
+%    \end{macrocode}
+%------------------------------------------------------
+%
+%   cvAwards environment
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment{cvAwards}{}{%
+  \cv@Title{\pdfkeysvalueof{/@cv/names/awardscerts}}{\faAward}
+  \stepcounter{cv@itemPrev}
+  \stepcounter{cv@itemNext}
+  \cv@definecvItem
+}{%
+  \cv@EndSectionDraw
+  \stepcounter{cv@lastItem}
+  \draw (item \the\value{cv@itemPrev}.south west)
     node (cv@last item \the\value{cv@lastItem}) {};
 }
 %    \end{macrocode}
